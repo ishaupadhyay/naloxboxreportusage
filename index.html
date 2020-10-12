@@ -32,8 +32,8 @@
         console.log(`Latitude : ${crd.latitude}`);
         console.log(`Longitude: ${crd.longitude}`);
         console.log(`More or less ${crd.accuracy} meters.`);
-        fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=${crd.latitude}&lon=${crd.longitude}`)
-       //fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=37.774929&lon=-122.419416`)
+        //fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=${crd.latitude}&lon=${crd.longitude}`)
+       fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=37.774929&lon=-122.419416`)
          .then(response => response.json())
          .then(users => {
             const {
