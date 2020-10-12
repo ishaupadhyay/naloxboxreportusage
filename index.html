@@ -32,8 +32,8 @@
         console.log(`Latitude : ${crd.latitude}`);
         console.log(`Longitude: ${crd.longitude}`);
         console.log(`More or less ${crd.accuracy} meters.`);
-        //fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=${crd.latitude}&lon=${crd.longitude}`)
-       fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=37.774929&lon=-122.419416`)
+        fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=${crd.latitude}&lon=${crd.longitude}`)
+       //fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=37.774929&lon=-122.419416`)
          .then(response => response.json())
          .then(users => {
             const {
@@ -47,7 +47,6 @@
                       country = ""                    
                   } = {}
               } = users
-            //console.log(name,neighbourhood,city,county,state,postcode,country);
             console.log(name);
          var today = new Date();
          let months = today.getMonth();
@@ -57,7 +56,6 @@
          var hours = today.getHours() > 9 ? today.getHours() : "0"+today.getHours();
          var mins = today.getMinutes() > 9 ? today.getMinutes() : today.getMinutes()+"0";
          let times = hours+":"+mins+" "+am_pm;
-         //let times = today.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' });
          
          console.log(times);
             var uri = `http://www.123formbuilder.com/form-5309298/form/sf.php?s=www.123formbuilder.com/form-5309298&${paramString}&control68432602=${times}&control61449027=${months}/${dates}/${years}&control68432100-1=${name.replace('&','and')}, ${neighbourhood.replace('&','and')}&control68432100-2=${county.replace('&','and')}&control68432100-3=${city}&control68432100-4=${state}&control68432100-5=${postcode}&control68432100-6=United States`;
