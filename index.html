@@ -49,15 +49,12 @@
               } = users
             //console.log(name,neighbourhood,city,county,state,postcode,country);
             console.log(name);
-            var uri = `http://www.123formbuilder.com/form-5309298/form/sf.php?s=www.123formbuilder.com/form-5309298&${paramString}&control61449034-1=${name.replace('&','and')}, ${neighbourhood.replace('&','and')}&control60640081-2=${county.replace('&','and')}&control60640081-3=${city}&control60640081-4=${state}&control60640081-5=${postcode}&control60640081-6=United States`;
+            var uri = `http://www.123formbuilder.com/form-5309298/form/sf.php?s=www.123formbuilder.com/form-5309298&${paramString}&control61449034-1=${name.replace('&','and')}, ${neighbourhood.replace('&','and')}&control61449034-2=${county.replace('&','and')}&control61449034-3=${city}&control61449034-4=${state}&control61449034-5=${postcode}&control61449034-6=United States`;
             var res = encodeURI(uri);
             console.log(res);
-            //let paramString2 = `&control60640081-1=${name}`;
             window.location.href = res;
-            //window.location.href = `http://www.123formbuilder.com/form-5258401/form/sf.php?s=www.123formbuilder.com/form-5258401&${paramString}&control60640081-1=${name}`;
-         
+            
         })
-      // window.location.href = `http://www.123formbuilder.com/form-5258401/form/sf.php?s=www.123formbuilder.com/form-5258401&${paramString}`;
     }
 
     function error(err) {
