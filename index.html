@@ -54,7 +54,7 @@
          let years = today.getFullYear();
          var am_pm = today.getHours() >= 12 ? "PM" : "AM";
          var hours = today.getHours() > 9 ? today.getHours() : "0"+today.getHours();
-         var mins = today.getMinutes() > 9 ? today.getMinutes() : today.getMinutes()+"0";
+         var mins = today.getMinutes() > 9 ? today.getMinutes() : "0"+today.getMinutes();
          let times = hours+":"+mins+" "+am_pm;
          
          console.log(times);
