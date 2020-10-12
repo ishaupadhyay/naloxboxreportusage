@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>NaloxBox : Scan to Register </title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  <p>Please turn on your location. Kindly wait to be redirected to registeration form.</p>
+  <script>
+    var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
+    function success(pos) {
+
+        let paramString = window.location.search.split("?")
+        paramString = paramString.length > 0 ? paramString[1] : ""
+        console.log(paramString)
+        var crd = pos.coords;
+
+        console.log('Your current position is:');
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+        fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=${crd.latitude}&lon=${crd.longitude}`)
+       //fetch(`https://us1.locationiq.com/v1/reverse.php?key=5dea3ec7fddcdf&format=json&lat=37.774929&lon=-122.419416`)
+         .then(response => response.json())
+         .then(users => {
+            const {
+                  address: {
+                      name = "",
+                      neighbourhood = "",
+                      city = "",
+                      county = "",
+                      state = "",
+                      postcode = "",
+                      country = ""                    
+                  } = {}
+              } = users
+            //console.log(name,neighbourhood,city,county,state,postcode,country);
+            console.log(name);
+            var uri = `http://www.123formbuilder.com/form-5258401/form/sf.php?s=www.123formbuilder.com/form-5258401&${paramString}&control60640081-1=${name.replace('&','and')}, ${neighbourhood.replace('&','and')}&control60640081-2=${county.replace('&','and')}&control60640081-3=${city}&control60640081-4=${state}&control60640081-5=${postcode}&control60640081-6=United States`;
+            var res = encodeURI(uri);
+            console.log(res);
+            //let paramString2 = `&control60640081-1=${name}`;
+            window.location.href = res;
+            //window.location.href = `http://www.123formbuilder.com/form-5258401/form/sf.php?s=www.123formbuilder.com/form-5258401&${paramString}&control60640081-1=${name}`;
+         
+        })
+      // window.location.href = `http://www.123formbuilder.com/form-5258401/form/sf.php?s=www.123formbuilder.com/form-5258401&${paramString}`;
+    }
+
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    
+    
+  </script>
+</body>
+</html>
