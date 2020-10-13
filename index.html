@@ -53,8 +53,8 @@
          let dates = today.getDate();
          let years = today.getFullYear();
          var am_pm = today.getHours() >= 12 ? "PM" : "AM";
-         //var hours = today.getHours() > 9 ? today.getHours() : "0"+today.getHours();
-         var hours = today.getHours() > 12 ? today.getHours()-12 : today.getHours() > 9 ? today.getHours() : "0"+today.getHours();
+         var hh = today.getHours() > 12 ? today.getHours()-12 : today.getHours();
+         var hours = hh > 9 ? hh : "0"+hh;
          var mins = today.getMinutes() > 9 ? today.getMinutes() : "0"+today.getMinutes();
          let times = hours+":"+mins+" "+am_pm;
          
